@@ -58,16 +58,6 @@
     path: "{{ jenkins_home }}/init.groovy.d/basic-security.groovy"
     state: absent
 
-- name: Fix a defect to disable setup wizard
-  jenkins_script:
-    script: |
-      import static jenkins.model.Jenkins.instance as jenkins
-      import jenkins.install.InstallState
-      if (!jenkins.installState.isSetupComplete()) {
-        InstallState.INITIAL_SETUP_COMPLETED.initializeState()
-      }
-    user: "{{ admin.userid }}"
-    password: "{{ admin.password }}"
 # Update Jenkins and install configured plugins.
 - include_tasks: plugins.yml
 
