@@ -32,8 +32,8 @@ jenkins_process_user: jenkins
 jenkins_process_group: "{{ jenkins_process_user }}"
 
 # If Jenkins is behind a proxy, configure this.
-jenkins_proxy_host: ""
-jenkins_proxy_port: ""
+jenkins_proxy_host: "{{ jenkins_proxy | urlsplit('hostname') }}"
+jenkins_proxy_port: "{{ jenkins_process_user | urlsplit('port') }}"
 jenkins_proxy_noproxy:
   - "127.0.0.1"
   - "localhost"
