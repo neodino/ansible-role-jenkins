@@ -31,6 +31,13 @@ jenkins_admin_token_file: ""
 jenkins_process_user: jenkins
 jenkins_process_group: "{{ jenkins_process_user }}"
 
+# If Jenkins is behind a proxy, configure this.
+jenkins_proxy_host: ""
+jenkins_proxy_port: ""
+jenkins_proxy_noproxy:
+  - "127.0.0.1"
+  - "localhost"
+
 jenkins_init_changes:
   - option: "JENKINS_ARGS"
     value: "--prefix={{ jenkins_url_prefix }}"
